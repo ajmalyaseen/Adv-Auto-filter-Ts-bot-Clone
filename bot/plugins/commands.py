@@ -58,7 +58,7 @@ async def start(bot, update):
                         [
                             InlineKeyboardButton
                                 (
-                                    '📫 SUPPORT', url="https://t.me/Ts_bots"
+                                    '⚠️JOIN', url="https://t.me/Film_zone_fz"
                                 )
                         ]
                     ]
@@ -90,7 +90,7 @@ async def start(bot, update):
         return
 
     buttons = [[
-        InlineKeyboardButton('📫 SUPPORT', url='https://t.me/Ts_bots'),
+        InlineKeyboardButton('⚠️JOIN', url='https://t.me/Film_Zone_Fz'),
         InlineKeyboardButton('📕 ABOUT', callback_data="about")
     ],[
         InlineKeyboardButton('💡 HELP', callback_data="help"),
