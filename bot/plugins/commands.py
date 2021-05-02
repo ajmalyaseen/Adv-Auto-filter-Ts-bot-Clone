@@ -39,7 +39,7 @@ async def start(bot, update):
                         [
                             InlineKeyboardButton
                                 (
-                                    '📫 SUPPORT', url="https://t.me/Ts_bots"
+                                    '📫 SUPPORT', url="https://t.me/fisco"
                                 )
                         ]
                     ]
@@ -58,7 +58,7 @@ async def start(bot, update):
                         [
                             InlineKeyboardButton
                                 (
-                                    '⚠️JOIN', url="https://t.me/Film_zone_fz"
+                                     '📫 SUPPORT', url="https://t.me/fisco_lab"
                                 )
                         ]
                     ]
@@ -90,7 +90,7 @@ async def start(bot, update):
         return
 
     buttons = [[
-        InlineKeyboardButton('⚠️JOIN', url='https://t.me/Film_Zone_Fz'),
+        InlineKeyboardButton('⚠️SUPPORT ', url='https://t.me/FISCO_LAB'),
         InlineKeyboardButton('📕 ABOUT', callback_data="about")
     ],[
         InlineKeyboardButton('💡 HELP', callback_data="help"),
