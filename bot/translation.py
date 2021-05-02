@@ -9,7 +9,7 @@ class Translation(object):
 
 I am a filter bot with advanced features 
 
-⚜️ 𝐌𝐚𝐢𝐧𝐭𝐚𝐢𝐧𝐞𝐝 𝐁𝐲 👉 **[DIAGO](https://t.me/diago_x)**
+⚜️ 𝐌𝐚𝐢𝐧𝐭𝐚𝐢𝐧𝐞𝐝 𝐁𝐲 👉 @DIAGO_X
 """   
     
     HELP_TEXT = """
@@ -44,7 +44,7 @@ I am a filter bot with advanced features
             
             👉 <code>Status</code> - Button Will Shows The Stats Of Your Channel
             
-<b><a href="https://t.me/V_SPOT">©️ V_SPOT</a></b>
+<b><a href="https://t.me/FISCO_LAB">©️ FISCO LAB</a></b>
 """
     
     ABOUT_TEXT = """
