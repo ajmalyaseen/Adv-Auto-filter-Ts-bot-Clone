@@ -8,7 +8,6 @@ class Translation(object):
 😅 Hai {}, 
 
 I am a filter bot with advanced features 
-currently working for **[Film_Zone](https://t.me/film_zone_group)**
 
 ⚜️ 𝐌𝐚𝐢𝐧𝐭𝐚𝐢𝐧𝐞𝐝 𝐁𝐲 👉 **[DIAGO](https://t.me/diago_x)**
 """   
@@ -62,9 +61,9 @@ currently working for **[Film_Zone](https://t.me/film_zone_group)**
 
 ○ sᴏᴜʀᴄᴇ ᴄᴏᴅᴇ : 🔐
 
-○ ᴄʀᴇᴀᴛᴏʀ : [DIAGO](https://t.me/T)
+○ ᴄʀᴇᴀᴛᴏʀ : [DIAGO](https://t.me/Diago_x)
 
 **ᴜᴘᴅᴀᴛᴇᴅ ᴏɴ 26-4-21 ɪɴᴅɪᴀɴ ᴛɪᴍᴇ 4:50 ᴘᴍ**
 
-**[©V_SPOT](https://t.me/V_spot)**
+**[©Fiscolab](https://t.me/fisco_lab)**
 """
