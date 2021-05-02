@@ -39,7 +39,7 @@ async def start(bot, update):
                         [
                             InlineKeyboardButton
                                 (
-                                    '📫 SUPPORT', url="https://t.me/fisco"
+                                    '📫 SUPPORT', url="https://t.me/fisco_lab"
                                 )
                         ]
                     ]
