@@ -107,6 +107,23 @@ async def auto_filter(bot, update):
             )
         
     else:
+        Send_msg=await bot.send_message(
+        chat_id = update.chat.id,
+        text=f"""🥺 𝐒𝐎𝐑𝐑𝐘, couldn't find the Movie 
+
+        1) Maybe Incorrect Format
+
+        Req Eg: Movie name year language 
+
+        2) Check the spelling (google or Imdb
+
+        3) Movie may not released 
+
+        ©️ Film zone""",             
+        reply_to_message_id=update.message_id
+        )
+        await asyncio.sleep(5) # in seconds
+        await Snd_msg.delete()
         return # return if no files found for that query
     
 
