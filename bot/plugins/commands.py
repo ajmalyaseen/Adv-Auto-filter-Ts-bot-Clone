@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/env python3o
 # -*- coding: utf-8 -*-
 # (c) @AlbertEinsteinTG | @Hillard_Har  
 
@@ -24,7 +24,15 @@ async def start(bot, update):
         if (file_id or file_type) == None:
             return
         
-        caption = file_caption if file_caption != ("" or None) else ("<code>" + file_name + "</code>")
+        caption = file_caption if file_caption != ("" or None) else ("<code>" + file_name + """</code>\n━━━━━━━━━━━━━━━━━━━━
+🌐 ɢʀᴏᴜᴘ
+@Film_Zone_Group
+  
+💠ᴄʜᴀɴɴᴇʟ
+@film_Zone_Fz
+
+💠 ᴄʜᴀɴɴᴇʟs
+@Film_Zone_Channels""")
         
         if file_type == "document":
         
@@ -39,7 +47,7 @@ async def start(bot, update):
                         [
                             InlineKeyboardButton
                                 (
-                                    '📫 SUPPORT', url="https://t.me/fisco_lab"
+                                    '🌐SHARE', url="https://t.me/share/url?url=https://t.me/film_zone_group"
                                 )
                         ]
                     ]
@@ -58,7 +66,7 @@ async def start(bot, update):
                         [
                             InlineKeyboardButton
                                 (
-                                     '📫 SUPPORT', url="https://t.me/fisco_lab"
+                                    '⚠️JOIN', url="https://t.me/Film_zone_fz"
                                 )
                         ]
                     ]
@@ -77,7 +85,7 @@ async def start(bot, update):
                         [
                             InlineKeyboardButton
                                 (
-                                    '📫 SUPPORT', url="https://t.me/Ts_bots"
+                                    '🌐SHARE', url="https://t.me/share/url?url=https://t.me/film_zone_group"
                                 )
                         ]
                     ]
@@ -90,7 +98,7 @@ async def start(bot, update):
         return
 
     buttons = [[
-        InlineKeyboardButton('⚠️SUPPORT ', url='https://t.me/FISCO_LAB'),
+        InlineKeyboardButton('⚠️JOIN', url='https://t.me/Film_Zone_Fz'),
         InlineKeyboardButton('📕 ABOUT', callback_data="about")
     ],[
         InlineKeyboardButton('💡 HELP', callback_data="help"),
