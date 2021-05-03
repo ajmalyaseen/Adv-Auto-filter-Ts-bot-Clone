@@ -28,7 +28,7 @@ async def auto_filter(bot, update):
     if ("https://" or "http://") in update.text:
         return
     
-    query = re.sub(r"[1-2]\d{3}", "", update.text) # Targetting Only 1000 - 2999 😁
+    query = re.sub(r"[1-3]\d{4}", "", update.text) # Targetting Only 1000 - 2999 😁
     
     if len(query) < 2:
         return
@@ -111,13 +111,16 @@ async def auto_filter(bot, update):
         chat_id = update.chat.id,
         text=f"""🥺 𝐒𝐎𝐑𝐑𝐘, couldn't find the Movie 
 
-1) Maybe Incorrect Format
+📌 Maybe Incorrect Format
 
-Req Eg: Movie name year language 
+   Req Eg: Movie name year language 
 
-2) Check the spelling (google or Imdb)
+📌 Check the spelling (google or Imdb)
 
-3) Movie may not released 
+📌 Movie may not released 
+
+📌 Movie series TV series Movie collection don't request this group 
+   You can request it @Film_Zone_Club
 
 ©️ <b>Film zone</b>""",             
         reply_to_message_id=update.message_id
@@ -201,7 +204,7 @@ Req Eg: Movie name year language
         try:
             await bot.send_message(
                 chat_id = update.chat.id,
-                text=f"**😃 Got it \n\nYour Query 👉 {query}**\n\n<b>©[ꜰɪʟᴍ ᴢᴏɴᴇ](https://t.me/film_zone_fz)</b>",
+                text=f"**😃 Got it \n\nYour Query 👉 {query}**\n\n**©[ꜰɪʟᴍ ᴢᴏɴᴇ](https://t.me/film_zone_fz)**",
                 reply_markup=reply_markup,
                 parse_mode="markdown",
                 reply_to_message_id=update.message_id
