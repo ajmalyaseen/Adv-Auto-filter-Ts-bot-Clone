@@ -111,15 +111,15 @@ async def auto_filter(bot, update):
         chat_id = update.chat.id,
         text=f"""🥺 𝐒𝐎𝐑𝐑𝐘, couldn't find the Movie 
 
-        1) Maybe Incorrect Format
+1) Maybe Incorrect Format
 
-        Req Eg: Movie name year language 
+Req Eg: Movie name year language 
 
-        2) Check the spelling (google or Imdb
+2) Check the spelling (google or Imdb)
 
-        3) Movie may not released 
+3) Movie may not released 
 
-        ©️ Film zone""",             
+©️ <b>Film zone</b>""",             
         reply_to_message_id=update.message_id
         )
         await asyncio.sleep(5) # in seconds
@@ -201,7 +201,7 @@ async def auto_filter(bot, update):
         try:
             await bot.send_message(
                 chat_id = update.chat.id,
-                text=f"**😃 Got it \n\nYour Query 👉 {query}**",
+                text=f"**😃 Got it \n\nYour Query 👉 {query}**\n\n<b>©[ꜰɪʟᴍ ᴢᴏɴᴇ](https://t.me/film_zone_fz)</b>",
                 reply_markup=reply_markup,
                 parse_mode="markdown",
                 reply_to_message_id=update.message_id
