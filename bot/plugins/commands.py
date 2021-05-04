@@ -32,8 +32,7 @@ async def start(bot, update):
 
 🎯 ᴄʜᴀɴɴᴇʟs
 @Film_Zone_Channels
-━━━━━━━━━━━━━━━━━━━━\n"<code>" + file_name + """</code>
-""")
+━━━━━━━━━━━━━━━━━━━━\n"<code>" + file_name + """</code>""")
         
         if file_type == "document":
         
