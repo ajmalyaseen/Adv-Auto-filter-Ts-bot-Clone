@@ -109,18 +109,20 @@ async def auto_filter(bot, update):
     else:
         Send_msg=await bot.send_message(
         chat_id = update.chat.id,
-        text=f"""🥺 𝐒𝐎𝐑𝐑𝐘, couldn't find the Movie 
+        text=f"""🥺 𝐒𝐎𝐑𝐑𝐘, 𝘾𝙤𝙪𝙡𝙙𝙣'𝙩  𝙛𝙞𝙣𝙙 𝙔𝙤𝙪𝙧 𝙈𝙤𝙫𝙞𝙚.....!
 
-📌 Maybe Incorrect Format
+🎯 𝐌𝐚𝐲𝐛𝐞 𝐈𝐧𝐜𝐨𝐫𝐫𝐞𝐜𝐭 𝐅𝐨𝐫𝐦𝐚𝐭🥴
 
-   Req Eg: Movie name year language 
+𝙴𝚐: '𝙼𝚘𝚟𝚒𝚎 𝚗𝚊𝚖𝚎 𝚢𝚎𝚊𝚛 𝚕𝚊𝚗𝚐𝚞𝚊𝚐𝚎'
 
-📌 Check the spelling (google or Imdb)
+🎯 𝐂𝐡𝐞𝐜𝐤 𝐭𝐡𝐞 𝐬𝐩𝐞𝐥𝐥𝐢𝐧𝐠(𝐆𝐨𝐨𝐠𝐥𝐞)👨‍💻
 
-📌 Movie may not released 
+🎯 𝐌𝐨𝐯𝐢𝐞 𝐦𝐚𝐲 𝐧𝐨𝐭 𝐫𝐞𝐥𝐞𝐚𝐬𝐞𝐝 🤷‍♂
 
-📌 Movie series TV series Movie collection don't request this group 
-   You can request it @Film_Zone_Club
+🎯 𝐃𝐨𝐧'𝐭 𝐚𝐬𝐤 𝐒𝐞𝐫𝐢𝐞𝐬 𝐀𝐧𝐝 𝐂𝐨𝐥𝐥𝐞𝐜𝐭𝐢𝐨𝐧𝐬
+𝐘𝐨𝐮 𝐜𝐚𝐧 𝐚𝐬𝐤  👉 [𝐅𝐢𝐥𝐦 𝐙𝐨𝐧𝐞 𝐂𝐥𝐮𝐛](https://t.me/film_zone_club)
+
+🤔 ᴀʀᴇ ʏᴏᴜ ꜱᴜʀᴇ ᴛʜɪꜱ ʀᴜʟᴇꜱ ɪꜱ ᴄᴏʀʀᴇᴄᴛ ꜱᴛɪʟʟ ᴡᴀɪᴛ ᴜᴘʟᴏᴀᴅɪɴɢ ꜱᴏᴏɴ......!
 
 ©️ <b>Film zone</b>""",             
         reply_to_message_id=update.message_id
