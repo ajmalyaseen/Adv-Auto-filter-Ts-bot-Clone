@@ -64,7 +64,12 @@ async def auto_filter(bot, update):
             file_name = filter.get("file_name")
             file_type = filter.get("file_type")
             file_link = filter.get("file_link")
-            
+            file_size = int(filter.get("file_size", ""))
+            file_size = round(file_size/(1024*1024)) # from B to MiB
+            file_size = str(file_size) + " MiB" if file_size < 1024 else str(round(file_size/1024)) + " GiB"
+                            # add emoji down below inside " " if you want..
+            button_text = f"[{file_size}] {file_name}" if file_size else file_name
+
             if file_type == "video":
                 if allow_video: 
                     pass
@@ -111,21 +116,21 @@ async def auto_filter(bot, update):
         chat_id = update.chat.id,
         text=f"""🥺 𝐒𝐎𝐑𝐑𝐘, 𝘾𝙤𝙪𝙡𝙙𝙣'𝙩  𝙛𝙞𝙣𝙙 𝙔𝙤𝙪𝙧 𝙈𝙤𝙫𝙞𝙚.....!
 
-• 𝐌𝐚𝐲𝐛𝐞 𝐈𝐧𝐜𝐨𝐫𝐫𝐞𝐜𝐭 𝐅𝐨𝐫𝐦𝐚𝐭🥴
+1) 𝐌𝐚𝐲𝐛𝐞 𝐈𝐧𝐜𝐨𝐫𝐫𝐞𝐜𝐭 𝐅𝐨𝐫𝐦𝐚𝐭🥴
   𝙴𝚐: '𝙼𝚘𝚟𝚒𝚎 𝚗𝚊𝚖𝚎 𝚢𝚎𝚊𝚛
 
-• 𝐂𝐡𝐞𝐜𝐤 𝐭𝐡𝐞 𝐬𝐩𝐞𝐥𝐥𝐢𝐧𝐠(𝐆𝐨𝐨𝐠𝐥𝐞)
+2) 𝐂𝐡𝐞𝐜𝐤 𝐭𝐡𝐞 𝐬𝐩𝐞𝐥𝐥𝐢𝐧𝐠(𝐆𝐨𝐨𝐠𝐥𝐞)
 
-• 𝐌𝐨𝐯𝐢𝐞 𝐦𝐚𝐲 𝐧𝐨𝐭 𝐫𝐞𝐥𝐞𝐚𝐬𝐞𝐝 🤷‍♂
+3) 𝐌𝐨𝐯𝐢𝐞 𝐦𝐚𝐲 𝐧𝐨𝐭 𝐫𝐞𝐥𝐞𝐚𝐬𝐞𝐝 🤷‍♂
 
-• 𝐃𝐨𝐧'𝐭 𝐚𝐬𝐤 𝐒𝐞𝐫𝐢𝐞𝐬 𝐀𝐧𝐝 𝐂𝐨𝐥𝐥𝐞𝐜𝐭𝐢𝐨𝐧𝐬𝐘𝐨𝐮 𝐜𝐚𝐧 𝐚𝐬𝐤 👉 @Film_Zone_Club
+4) 𝐃𝐨𝐧'𝐭 𝐚𝐬𝐤 𝐒𝐞𝐫𝐢𝐞𝐬 𝐀𝐧𝐝 𝐂𝐨𝐥𝐥𝐞𝐜𝐭𝐢𝐨𝐧𝐬
 
 ᴀʀᴇ ʏᴏᴜ ꜱᴜʀᴇ ᴛʜɪꜱ ʀᴜʟᴇꜱ ɪꜱ ᴄᴏʀʀᴇᴄᴛ ꜱᴛɪʟʟ ᴡᴀɪᴛ ᴜᴘʟᴏᴀᴅɪɴɢ ꜱᴏᴏɴ......!
 
 ©️ <b>Film zone</b>""",             
         reply_to_message_id=update.message_id
         )
-        await asyncio.sleep(10) # in seconds
+        await asyncio.sleep(13) # in seconds
         await Send_message.delete()
         return # return if no files found for that query
     
@@ -148,13 +153,13 @@ async def auto_filter(bot, update):
         if len_result != 1:
             result[0].append(
                 [
-                    InlineKeyboardButton("Next ⏩", callback_data=f"navigate(0|next|{query})")
+                    InlineKeyboardButton("Next Page ⏩", callback_data=f"navigate(0|next|{query})")
                 ]
             )
         
         # Just A Decaration
         result[0].append([
-            InlineKeyboardButton(f"🔰 Page 1/{len_result if len_result < max_pages else max_pages} 🔰", callback_data="ignore")
+            InlineKeyboardButton(f"🎬 Page 1/{len_result if len_result < max_pages else max_pages} 🔰", callback_data="ignore")
         ])
         
         
