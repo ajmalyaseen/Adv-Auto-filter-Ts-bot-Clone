@@ -28,7 +28,7 @@ async def auto_filter(bot, update):
     if ("https://" or "http://") in update.text:
         return
     
-    query = re.sub(r"[1-3]\d{4}", "", update.text) # Targetting Only 1000 - 2999 😁
+    query = re.sub(r"[1-2]\d{3}", "", update.text) # Targetting Only 1000 - 2999 😁
     
     if len(query) < 2:
         return
@@ -55,7 +55,7 @@ async def auto_filter(bot, update):
     max_per_page = configs["configs"]["max_per_page"] # maximum buttom per page 
     show_invite = configs["configs"]["show_invite_link"] # should or not show active chat invite link
     
-    show_invite = (False if pm_file_chat == True else show_invite) # turn show_invite to False if pm_file_chat is True
+    # show_invite = (False if pm_file_chat == True else show_invite) # turn show_invite to False if pm_file_chat is True
     
     filters = await db.get_filters(group_id, query)
     
@@ -69,12 +69,12 @@ async def auto_filter(bot, update):
             # from B to MiB
             file_size = round(file_size/(1024*1024))
             
-            file_size = f"[{str(file_size)}] MiB " if file_size < 1024 else f"[{str(round(file_size/1024))}] GiB "
-            file_size = "" if file_size == ("[0] MiB" or "[0] GiB") else file_size
+            file_size = f"[{str(file_size)} MiB] " if file_size < 1024 else f"[{str(round(file_size/1024))} GiB] "
+            file_size = "" if file_size == ("[0 MiB] " or "[0 GiB] ") else file_size
             
                             # add emoji down below inside " " if you want..
             button_text = f"{file_size}{file_name}" if file_size else file_name
-
+            
             if file_type == "video":
                 if allow_video: 
                     pass
@@ -112,31 +112,11 @@ async def auto_filter(bot, update):
             
             results.append(
                 [
-                    InlineKeyboardButton(file_name, url=file_link)
+                    InlineKeyboardButton(button_text, url=file_link)
                 ]
             )
         
     else:
-        Send_message=await bot.send_message(
-        chat_id = update.chat.id,
-        text=f"""🥺 𝐒𝐎𝐑𝐑𝐘, 𝘾𝙤𝙪𝙡𝙙𝙣'𝙩  𝙛𝙞𝙣𝙙 𝙔𝙤𝙪𝙧 𝙈𝙤𝙫𝙞𝙚.....!
-
-1) 𝐌𝐚𝐲𝐛𝐞 𝐈𝐧𝐜𝐨𝐫𝐫𝐞𝐜𝐭 𝐅𝐨𝐫𝐦𝐚𝐭🥴
-  𝙴𝚐: '𝙼𝚘𝚟𝚒𝚎 𝚗𝚊𝚖𝚎 𝚢𝚎𝚊𝚛
-
-2) 𝐂𝐡𝐞𝐜𝐤 𝐭𝐡𝐞 𝐬𝐩𝐞𝐥𝐥𝐢𝐧𝐠(𝐆𝐨𝐨𝐠𝐥𝐞)
-
-3) 𝐌𝐨𝐯𝐢𝐞 𝐦𝐚𝐲 𝐧𝐨𝐭 𝐫𝐞𝐥𝐞𝐚𝐬𝐞𝐝 🤷‍♂
-
-4) 𝐃𝐨𝐧'𝐭 𝐚𝐬𝐤 𝐒𝐞𝐫𝐢𝐞𝐬 𝐀𝐧𝐝 𝐂𝐨𝐥𝐥𝐞𝐜𝐭𝐢𝐨𝐧𝐬
-
-ᴀʀᴇ ʏᴏᴜ ꜱᴜʀᴇ ᴛʜɪꜱ ʀᴜʟᴇꜱ ɪꜱ ᴄᴏʀʀᴇᴄᴛ ꜱᴛɪʟʟ ᴡᴀɪᴛ ᴜᴘʟᴏᴀᴅɪɴɢ ꜱᴏᴏɴ......!
-
-©️ <b>Film zone</b>""",             
-        reply_to_message_id=update.message_id
-        )
-        await asyncio.sleep(13) # in seconds
-        await Send_message.delete()
         return # return if no files found for that query
     
 
@@ -158,13 +138,13 @@ async def auto_filter(bot, update):
         if len_result != 1:
             result[0].append(
                 [
-                    InlineKeyboardButton("Next Page ⏩", callback_data=f"navigate(0|next|{query})")
+                    InlineKeyboardButton("Next ⏩", callback_data=f"navigate(0|next|{query})")
                 ]
             )
         
         # Just A Decaration
         result[0].append([
-            InlineKeyboardButton(f"🎬 Page 1/{len_result if len_result < max_pages else max_pages} 🔰", callback_data="ignore")
+            InlineKeyboardButton(f"🔰 Page 1/{len_result if len_result < max_pages else max_pages} 🔰", callback_data="ignore")
         ])
         
         
@@ -214,9 +194,9 @@ async def auto_filter(bot, update):
         try:
             await bot.send_message(
                 chat_id = update.chat.id,
-                text=f"**😃 Got it \n\nYour Query 👉 {query}**\n\n**©[ꜰɪʟᴍ ᴢᴏɴᴇ](https://t.me/film_zone_fz)**",
+                text=f"Found {(len_results)} Results For Your Query: <code>{query}</code>",
                 reply_markup=reply_markup,
-                parse_mode="markdown",
+                parse_mode="html",
                 reply_to_message_id=update.message_id
             )
 
