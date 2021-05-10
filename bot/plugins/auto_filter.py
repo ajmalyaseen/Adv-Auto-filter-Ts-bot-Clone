@@ -28,7 +28,7 @@ async def auto_filter(bot, update):
     if ("https://" or "http://") in update.text:
         return
     
-    query = re.sub(r"[1-2]\d{3}", "", update.text) # Targetting Only 1000 - 2999 😁
+    query = re.sub(r"[1-3]\d{4}", "", update.text) # Targetting Only 1000 - 2999 😁
     
     if len(query) < 2:
         return
@@ -55,7 +55,7 @@ async def auto_filter(bot, update):
     max_per_page = configs["configs"]["max_per_page"] # maximum buttom per page 
     show_invite = configs["configs"]["show_invite_link"] # should or not show active chat invite link
     
-    # show_invite = (False if pm_file_chat == True else show_invite) # turn show_invite to False if pm_file_chat is True
+    show_invite = (False if pm_file_chat == True else show_invite) # turn show_invite to False if pm_file_chat is True
     
     filters = await db.get_filters(group_id, query)
     
@@ -64,16 +64,6 @@ async def auto_filter(bot, update):
             file_name = filter.get("file_name")
             file_type = filter.get("file_type")
             file_link = filter.get("file_link")
-            file_size = int(filter.get("file_size", "0"))
-            
-            # from B to MiB
-            file_size = round(file_size/(1024*1024))
-            
-            file_size = f"[{str(file_size)} MiB] " if file_size < 1024 else f"[{str(round(file_size/1024))} GiB] "
-            file_size = "" if file_size == ("[0 MiB] " or "[0 GiB] ") else file_size
-            
-                            # add emoji down below inside " " if you want..
-            button_text = f"{file_size}{file_name}" if file_size else file_name
             
             if file_type == "video":
                 if allow_video: 
@@ -112,7 +102,7 @@ async def auto_filter(bot, update):
             
             results.append(
                 [
-                    InlineKeyboardButton(button_text, url=file_link)
+                    InlineKeyboardButton(file_name, url=file_link)
                 ]
             )
         
@@ -194,9 +184,9 @@ async def auto_filter(bot, update):
         try:
             await bot.send_message(
                 chat_id = update.chat.id,
-                text=f"Found {(len_results)} Results For Your Query: <code>{query}</code>",
+                text=f"**😃 Got it \n\nYour Query 👉 {query}**",
                 reply_markup=reply_markup,
-                parse_mode="html",
+                parse_mode="markdown",
                 reply_to_message_id=update.message_id
             )
 
