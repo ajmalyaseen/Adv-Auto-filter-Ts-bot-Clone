@@ -1,30 +1,29 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-# (c) @AlbertEinsteinTG
+# (c) @AlbertEinsteinTG | @Hillard_Har 
 
 import re
 from pyrogram import Client, filters
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 
-from bot import CHAT_DETAILS
-from bot.plugins.utils import admin_list
-
-
+from bot import VERIFY # pylint: disable=import-error
 
 @Client.on_message(filters.command(["settings"]) & filters.group, group=1)
 async def settings(bot, update):
     
     chat_id = update.chat.id
     user_id = update.from_user.id if update.from_user else None
-    global CHAT_DETAILS
-    
-    chat_dict = CHAT_DETAILS.get(str(chat_id))
-    chat_admins = chat_dict.get("admins") if chat_dict != None else None
+    global VERIFY
 
-    if ( chat_dict or chat_admins ) == None: # Make Admin's ID List
-        chat_admins = await admin_list(chat_id, bot, update)
+    if VERIFY.get(str(chat_id)) == None: # Make Admin's ID List
+        admin_list = []
+        async for x in bot.iter_chat_members(chat_id=chat_id, filter="administrators"):
+            admin_id = x.user.id 
+            admin_list.append(admin_id)
+        admin_list.append(None)
+        VERIFY[str(chat_id)] = admin_list
 
-    if user_id not in chat_admins:
+    if not user_id in VERIFY.get(str(chat_id)): # Checks if user is admin of the chat
         return
     
     bot_info = await bot.get_me()
@@ -37,35 +36,35 @@ async def settings(bot, update):
         [
             InlineKeyboardButton
                 (
-                    "Channels", callback_data=f"channel_list({chat_id})"
+                    "🎬 CHANNELS", callback_data=f"channel_list({chat_id})"
                 ), 
             
             InlineKeyboardButton
                 (
-                    "Filter Types", callback_data=f"types({chat_id})"
+                    "🔍 FILTER TYPES", callback_data=f"types({chat_id})"
                 )
         ],
         [
             InlineKeyboardButton
                 (
-                    "Configure 🛠", callback_data=f"config({chat_id})"
+                    "🛠️ CONFIG", callback_data=f"config({chat_id})"
                 )
         ], 
         [
             InlineKeyboardButton
                 (
-                    "Status", callback_data=f"status({chat_id})"
+                    "📋 STATUS", callback_data=f"status({chat_id})"
                 ),
             
             InlineKeyboardButton
                 (
-                    "About", callback_data=f"about({chat_id})"
+                    "⏱️ BOT STATUS", callback_data=f"about({chat_id})"
                 )
         ],
         [
             InlineKeyboardButton
                 (
-                    "Close 🔐", callback_data="close"
+                    "🔐 CLOSE", callback_data="close"
                 )
         ]
     ]
